@@ -10,7 +10,7 @@ import { openDrawer } from "api/core/store/internal-slices/ui/actions";
 
 import {
   getAppName,
-  getPages,
+  getHomePage,
 } from "api/core/store/internal-slices/config/selectors";
 import { isHomePage } from "api/core/store/internal-slices/ui/selectors";
 
@@ -22,7 +22,7 @@ const AppHeader = () => {
   const dispatch = useDispatch();
   const APP_NAME = useSelector(getAppName);
   const hideHomeButton = useSelector(isHomePage);
-  const PATHS = useSelector(getPages);
+  const HOME = useSelector(getHomePage);
   const CustomHeader = driveWithDarkMode(Header);
 
   return (
@@ -32,7 +32,7 @@ const AppHeader = () => {
         <Button
           aria-label="back button"
           onClick={() => {
-            dispatch(requestRoute(PATHS.Home));
+            dispatch(requestRoute(HOME));
           }}
           unstyled
           className={classNames(

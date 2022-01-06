@@ -47,6 +47,7 @@ const AppDrawer = () => {
           <Link
             to="https://github.com/CianciarusoCataldo/modular-app"
             className="ml-1 text-white text-lg"
+            newTab
           >
             {APP_NAME}
           </Link>
