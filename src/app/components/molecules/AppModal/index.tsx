@@ -1,4 +1,5 @@
-import { useSelector } from "react-redux";
+import { useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import MODALS from "app/modals";
 
@@ -6,22 +7,28 @@ import { driveWithDarkMode } from "api/helpers/ui-helper";
 import { useModalTranslation } from "app/hooks/localization";
 
 import { Modal } from "@cianciarusocataldo/modular-ui";
-import { getConfig } from "api/core/store/internal-slices/config/selectors";
 import { getModalView } from "api/core/store/internal-slices/modal/selectors";
+import { closeModal } from "api/core/store/internal-slices/modal/actions";
 
+/** Custom Modular-app modal */
 const AppModal = () => {
+  const dispatch = useDispatch();
+  const onClose = useCallback(() => {
+    dispatch(closeModal());
+  }, [dispatch]);
   const { isVisible, type } = useSelector(getModalView);
-  const CONFIG = useSelector(getConfig);
   const ModalComponent = driveWithDarkMode(Modal);
   const ModalContent = type ? MODALS[type] : <div />;
   const t = useModalTranslation();
 
-  return CONFIG.REDUX.MODAL ? (
-    <ModalComponent title={type ? t(type) : ""} hide={!isVisible}>
+  return (
+    <ModalComponent
+      onClose={onClose}
+      title={type ? t(type) : ""}
+      hide={!isVisible}
+    >
       {ModalContent}
     </ModalComponent>
-  ) : (
-    <div />
   );
 };
 

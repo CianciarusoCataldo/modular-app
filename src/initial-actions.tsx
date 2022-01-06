@@ -7,8 +7,10 @@ import { Provider } from "react-redux";
 import { History } from "history";
 import { Store } from "@reduxjs/toolkit";
 
+import { ToastContainer } from "react-toastify";
 import App from "app/App";
 
+/** Render Modular-app */
 export const startRender = (store: Store, history: History) => {
   render(
     <Suspense
@@ -19,6 +21,7 @@ export const startRender = (store: Store, history: History) => {
         </div>
       }
     >
+      <ToastContainer />
       <Provider store={store}>
         <App history={history} />
       </Provider>

@@ -16,6 +16,7 @@ import {
 
 import { Drawer, Link } from "@cianciarusocataldo/modular-ui";
 
+/** Custom Modular-app laguage drawer */
 const AppDrawer = () => {
   const dispatch = useDispatch();
   const PATHS = useSelector(getPages);

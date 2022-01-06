@@ -3,6 +3,7 @@ import { ModalState } from "./types";
 
 import { closeModal, openModal } from "./actions";
 
+/** Internal `modal` reducer actions */
 const REDUCER_ACTIONS: ReducerAction<ModalState>[] = [
   {
     action: openModal.type,

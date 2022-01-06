@@ -1,9 +1,13 @@
-import { changeLanguage } from "api/core/store/internal-slices/ui/actions";
-import { getLanguage } from "api/core/store/internal-slices/ui/selectors";
-import { LANGUAGES_ICONS } from "assets/images";
-import { Dropdown } from "@cianciarusocataldo/modular-ui";
 import { useDispatch, useSelector } from "react-redux";
 
+import { LANGUAGES_ICONS } from "assets/images";
+
+import { changeLanguage } from "api/core/store/internal-slices/ui/actions";
+import { getLanguage } from "api/core/store/internal-slices/ui/selectors";
+
+import { Dropdown } from "@cianciarusocataldo/modular-ui";
+
+/** Custom Modular-app laguage selector */
 const LanguageSelector = () => {
   const dispatch = useDispatch();
   const language = useSelector(getLanguage);

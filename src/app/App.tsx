@@ -12,6 +12,7 @@ import AppHeader from "./components/molecules/AppHeader";
 import AppDrawer from "./components/molecules/AppDrawer";
 import AppModal from "./components/molecules/AppModal";
 
+/** Modular-app main component */
 const App = ({ history }: { history: History }) => {
   const PAGES = useSelector(getPages);
   const HOME = useSelector(getHomePage);

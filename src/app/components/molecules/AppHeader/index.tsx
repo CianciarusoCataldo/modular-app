@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { HOME_ICON, BurgerIcon, LogoIcon } from "assets/images";
-
 import classNames from "classnames";
+
+import { HomeIcon, BurgerIcon, LogoIcon } from "assets/images";
 
 import { driveWithDarkMode } from "api/helpers/ui-helper";
 
@@ -14,9 +14,10 @@ import {
 } from "api/core/store/internal-slices/config/selectors";
 import { isHomePage } from "api/core/store/internal-slices/ui/selectors";
 
-import { Button, Header } from "@cianciarusocataldo/modular-ui";
+import { Button, Header, Link } from "@cianciarusocataldo/modular-ui";
 import LanguageSelector from "../LanguageSelector";
 
+/** Custom Modular-app header */
 const AppHeader = () => {
   const dispatch = useDispatch();
   const APP_NAME = useSelector(getAppName);
@@ -41,7 +42,7 @@ const AppHeader = () => {
             }
           )}
         >
-          {HOME_ICON}
+          {HomeIcon}
         </Button>
         <Button
           aria-label="drawer button"
@@ -59,17 +60,23 @@ const AppHeader = () => {
             {LogoIcon}
           </div>
           <div className="flex flex-col m-auto mb-3">
-            <div className="m-auto hover:text-blue-400">
-              <a href="https://github.com/CianciarusoCataldo/modular-app">
-                <p className="text-4xl">{APP_NAME}</p>
-              </a>
+            <div className="m-auto">
+              <Link
+                newTab
+                unstyled
+                to="https://github.com/CianciarusoCataldo/modular-app"
+              >
+                <p className="text-white text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl 2xl:text-4xl 3xl:text-4xl 4xl:text-4xl">
+                  {APP_NAME}
+                </p>
+              </Link>
               <div className="mt-2">
                 <a
                   href="https://github.com/CianciarusoCataldo/modular-app"
                   style={{ height: "25px" }}
                 >
                   <img
-                    alt="npm"
+                    alt=""
                     src="https://img.shields.io/github/package-json/v/cianciarusocataldo/modular-app?label=latest%20version"
                     height="25"
                   />

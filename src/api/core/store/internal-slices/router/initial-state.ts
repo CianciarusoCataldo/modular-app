@@ -1,3 +1,4 @@
+/** Internal `router` slice initial state */
 const ROUTER_INITIAL_STATE = {
   location: {
     pathname: "",

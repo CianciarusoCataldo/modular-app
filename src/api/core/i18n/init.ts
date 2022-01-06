@@ -1,11 +1,13 @@
 import { Config } from "api/core/store/internal-slices/config/types";
 
-import i18n from "./instance";
 import { initReactI18next } from "react-i18next";
 import ChainedBackend from "i18next-chained-backend";
 import HttpBackend from "i18next-http-backend";
 import LocalStorageBackend from "i18next-localstorage-backend";
 
+import i18n from "./instance";
+
+/** Init i18next system, using app.config.json parameters (inside I18N field) */
 export const initi18n = (CONFIG: Config) => {
   i18n
     .use(initReactI18next)
@@ -15,7 +17,7 @@ export const initi18n = (CONFIG: Config) => {
       supportedLngs: CONFIG.I18N.SUPPORTED_LANGUAGES,
       lng: navigator.language.split("-")[0],
       preload: [CONFIG.I18N.FALLBACK_LANGUAGE],
-      debug: true,
+      debug: false,
       backend: {
         backends: [LocalStorageBackend, HttpBackend],
         backendOptions: [
@@ -26,12 +28,18 @@ export const initi18n = (CONFIG: Config) => {
                 : 0,
           },
           {
-            loadPath: `${CONFIG.ROUTER.BASENAME}${CONFIG.I18N.LOAD_PATH}`,
+            loadPath: CONFIG.I18N.LOAD_PATH,
           },
         ],
       },
-      ns: ["common", "page-titles", "home", "modal", ...CONFIG.I18N.NAMESPACES],
-      defaultNS: "page-titles",
+      ns: [
+        "common",
+        "page-titles",
+        "home",
+        "modal-titles",
+        ...CONFIG.I18N.NAMESPACES,
+      ],
+      defaultNS: CONFIG.I18N.DEFAULT_NAMESPACE,
       interpolation: {
         escapeValue: false,
       },

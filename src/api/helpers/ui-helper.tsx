@@ -4,6 +4,7 @@ import i18n from "api/core/i18n/instance";
 import { isInDarkMode } from "api//core/store/internal-slices/ui/selectors";
 import { useSelector } from "react-redux";
 
+/** Update app page title (displayed on browser tab) depending on actual route */
 export const updatePageTitle = (CONFIG: Config) => {
   const actualPath = window.location.pathname;
 
@@ -37,6 +38,13 @@ export const updatePageTitle = (CONFIG: Config) => {
   }`;
 };
 
+/**
+ * Check if actual route is HOME_PAGE route (from app.config.json)
+ *
+ * @param homePath HOME_PAGE path
+ *
+ * @returns true if actual route is HOME_PAGE route, false otherwise
+ */
 export const isActualRouteHomepage = (homePath: string) => {
   return (
     `${window.location.pathname}/` === homePath ||

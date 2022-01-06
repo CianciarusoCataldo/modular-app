@@ -9,6 +9,7 @@ import {
 } from "./actions";
 import { checkRoute } from "../router/actions";
 
+/** Internal `ui` reducer actions */
 const REDUCER_ACTIONS: ReducerAction<UIState>[] = [
   {
     action: switchDarkMode.type,

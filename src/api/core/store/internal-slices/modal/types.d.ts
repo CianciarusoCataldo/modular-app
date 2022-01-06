@@ -1,6 +1,6 @@
-import MODALS from "app/modals";
+import { ModalType } from "app/modals/types";
 
 export interface ModalState {
   isVisible: boolean;
-  type: keyof typeof MODALS | null;
+  type: ModalType | null;
 }

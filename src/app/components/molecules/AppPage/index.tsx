@@ -1,6 +1,8 @@
 import { driveWithDarkMode } from "api/helpers/ui-helper";
+
 import { Page } from "@cianciarusocataldo/modular-ui";
 
+/** Custom Modular-app page */
 const AppPage = ({
   children,
 }: {
