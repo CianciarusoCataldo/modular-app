@@ -44,7 +44,7 @@ const AppDrawer = () => {
         <div className="flex flex-row">
           {LogoIcon}
           <Link
-            to="https://github.com/CianciarusoCataldo/modular-ui"
+            to="https://github.com/CianciarusoCataldo/modular-app"
             className="ml-1 text-white text-lg"
           >
             {APP_NAME}

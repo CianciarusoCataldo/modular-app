@@ -60,17 +60,17 @@ const AppHeader = () => {
           </div>
           <div className="flex flex-col m-auto mb-3">
             <div className="m-auto hover:text-blue-400">
-              <a href="https://github.com/CianciarusoCataldo/modular-ui">
+              <a href="https://github.com/CianciarusoCataldo/modular-app">
                 <p className="text-4xl">{APP_NAME}</p>
               </a>
               <div className="mt-2">
                 <a
-                  href="https://www.npmjs.com/package/@cianciarusocataldo/modular-ui"
+                  href="https://github.com/CianciarusoCataldo/modular-app"
                   style={{ height: "25px" }}
                 >
                   <img
                     alt="npm"
-                    src="https://img.shields.io/npm/v/@cianciarusocataldo/modular-ui?label=latest version"
+                    src="https://img.shields.io/github/package-json/v/cianciarusocataldo/modular-app?label=latest%20version"
                     height="25"
                   />
                 </a>
