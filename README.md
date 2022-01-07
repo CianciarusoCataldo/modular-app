@@ -1,3 +1,7 @@
+<div align="center">
+<img width="600px" alt="" src="https://user-images.githubusercontent.com/47371276/148469432-a9014ca5-32ff-49c7-8f30-a69b3a528006.png" />
+</div>
+  
 # modular-app
 
 ![GitHub](https://img.shields.io/github/license/CianciarusoCataldo/modular-app?color=dark&label=%20license) 
