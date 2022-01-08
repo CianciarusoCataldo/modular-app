@@ -13,7 +13,7 @@
     "FALLBACK_LANGUAGE": "en",
     "SUPPORTED_LANGUAGES": ["en", "it", "es", "fr", "de"],
     "NAMESPACES": ["home"],
-    "DEFAULT_NAMESPACE": "common",
+    "DEFAULT_NAMESPACE": "home",
     "LOAD_PATH": "/modular-app/locales/{{lng}}/{{ns}}.json"
   }
 }
