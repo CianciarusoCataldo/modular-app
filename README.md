@@ -119,7 +119,7 @@ To better understand how to use `modular-app` system, here is a real example, [m
 ```
 
 From these settings, modular-app system will configure some stuffs:
-- APP_NAME is set to `Cataldo Cianciaruso - Portfolio Page`
+- `APP_NAME` is set to `Cataldo Cianciaruso - Portfolio Page`
 - `ui` and `modal` management systems are both enabled
 - There are 3 pages, `HOME_PAGE` (this name can't be changed, for automation purpose), `INFO` and `PROJECTS`, and so 3 components with these names are located inside `app/pages` folder:
 
