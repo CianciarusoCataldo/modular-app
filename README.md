@@ -25,6 +25,7 @@ Build your Web app from here !
   - [REDUX](#redux)
   - [ROUTER](#router) 
   - [I18N](#i18n)
+- [Customize Redux state](#customize-redux-state) 
 - [A fully working example](#a-fully-working-example)
 - [Included libraries](#included-libraries)
 - [Authors](#authors)
@@ -51,7 +52,7 @@ Your app name, used in various part of the application:
 ### REDUX
 Additional redux settings. Modular-app gives you some initial redux actions, epics and reducers inside the state, to speed up your development work:
 - `ui`: drive some useful UI features, like the `dark-mode`, the `drawer` management through some specific Redux actions and the toast notifications system
-- `modal`: manage the global modal system. You can manage which Modal is showed and when, simply by adding custom components inside `app/modals`, and by using the `openModal` action, using the component key as parameter. As an example, I included an initial modal inside this dictionary, called DEFAULT. So, to open this specific modal, you'll just need to dispatch `openModal('DEFAULT')`. Only modals key inside `app/modals` exported object are allowed, otherwise no content will be showed.
+- `modal`: manage the global modal system. You can manage which Modal is showed and when, simply by adding custom components inside `app/modals`, and by using the `openModal` action, using the component key as parameter. As an example, I included an empty modal inside `MODALS` dictionary, called `DEFAULT`. So, to open this specific modal, you'll just need to dispatch `openModal('DEFAULT')`. Only modals keys inside `app/modals` exported object are allowed, otherwise no content will be showed.
 
 | Parameter | Description |
 | ------------- | ------------- |
@@ -69,7 +70,9 @@ Contains all router config parameters. These settings are used to configure the 
 | HOME_PAGE  | Your Home-page route, needed for some app features. Every route (URL) not specified inside `PAGES` will redirect to this route. Also, The Home icon is showed at the top-left of the app when the user is into another route (to easily go back to home page)|
 | PAGES  | Your app pages. This dictionary (key-value format, the key is the Page name, and the value is the Page associated route) is used to determine which page is showed for each available route. You must specify here your pages to make them accessible by the routing logic. |
 
-**IMPORTANT: the routing logic will search for every page inside `app/pages` folder, so make sure to create a file for each page (with a default export) to avoid errors!**
+**IMPORTANT, TO AVOID ERRORS:**
+- **The routing logic will search for every page inside `app/pages` folder, so make sure to create a file for each page (with a default export) specified inside `PAGES`field**
+- **Home Page folder/file (always inside `app/pages`) must be named `HOME_PAGE` for automation purpose**
 
 ---
 
@@ -86,6 +89,13 @@ Modular-app let you fully localize your app (multi-language support) with [I18ne
 | MODALS_NAMESPACE | Namespace use to set modals titles. The modular-app localization logic will look at <MODALS_NAMESPACE> dictionary to determine each modal title, using the modal key as parameter for [i18next t function](https://www.i18next.com/translation-function/essentials). |
 
 ---
+
+## Customize Redux state
+If you want to customize Modular-app global state (powered by [Redux](https://redux.js.org/)), you just need to follow few steps:
+- Add your custom reducers inside `REDUCERS` object, located to `api/state-slices/reducers` (state interface will be updated accordingly)
+- Add your custom epics inside `EPICS`, located to `api/state-slices/reducers`
+- Add your custom initial-states (for preloading purpose) inside `PRELOADED_STATE`, located to `api/state-slices/preloaded-state`
+
 
 ## A fully working example
 
