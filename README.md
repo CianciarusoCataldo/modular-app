@@ -14,7 +14,7 @@
 
 --- 
 
-An optimized and ready to use React app, a standard template for most projects. Internally, use [modular-ui](https://github.com/CianciarusoCataldo/modular-ui) library for UI components (I maintain it too, check it out !). A production ready version of the standard app can be found at https://cianciarusocataldo.github.io/modular-app/
+An optimized and ready to use React app, a standard template for every projects. Internally, use [modular-ui](https://github.com/CianciarusoCataldo/modular-ui) library for UI components (I maintain it too, check it out !). A production ready version of the standard app can be found at https://cianciarusocataldo.github.io/modular-app/
 
 Build your Web app from here ! 
 
