@@ -47,6 +47,9 @@ Your app name, used in various part of the application:
 - Every page title is composed by <APP_NAME> - <PAGE_TITLE>
 - The APP_NAME is showed inside the Header and at the top of the Drawer
 
+
+:red_circle: **IMPORTANT: set your custom app name also inside `public/manifest.json`, `public/index.html` and `package.json` files.**
+
 ---
 
 ### REDUX
@@ -70,7 +73,8 @@ Contains all router config parameters. These settings are used to configure the 
 | HOME_PAGE  | Your Home-page route, needed for some app features. Every route (URL) not specified inside `PAGES` will redirect to this route. Also, The Home icon is showed at the top-left of the app when the user is into another route (to easily go back to home page)|
 | PAGES  | Your app pages. This dictionary (key-value format, the key is the Page name, and the value is the Page associated route) is used to determine which page is showed for each available route. You must specify here your pages to make them accessible by the routing logic. |
 
-**IMPORTANT, TO AVOID ERRORS:**
+
+:red_circle: **IMPORTANT, TO AVOID ERRORS:**
 - **The routing logic will search for every page inside `app/pages` folder, so make sure to create a file for each page (with a default export) specified inside `PAGES`field**
 - **Home Page folder/file (always inside `app/pages`) must be named `HOME_PAGE` for automation purpose**
 
@@ -88,6 +92,9 @@ Modular-app let you fully localize your app (multi-language support) with [I18ne
 | PAGES_NAMESPACE | Namespace used specifically to set page titles. The modular-app localization logic will look at `<PAGES_NAMESPACE>` dictionary to determine each page title, using the page key as parameter for i18next t function. |
 | MODALS_NAMESPACE | Namespace use to set modals titles. The modular-app localization logic will look at <MODALS_NAMESPACE> dictionary to determine each modal title, using the modal key as parameter for [i18next t function](https://www.i18next.com/translation-function/essentials). |
 
+
+:red_circle: **IMPORTANT: update your web-app homepage URL inside `package.json` (`homepage` field) and `.env` files**
+
 ---
 
 ## Customize Redux state
@@ -100,7 +107,7 @@ If you want to customize Modular-app global state (powered by [Redux](https://re
 ## A fully working example
 
 To better understand how to use `modular-app` system, here is a real example, [my portfolio web-app](https://github.com/CianciarusoCataldo/CianciarusoCataldo.github.io), that is based on `modular-app`. Below, my `app.config.json`: 
-``` 
+```json 
 {
   "APP_NAME": "Cataldo Cianciaruso - Portfolio Page",
   "REDUX": {
@@ -140,7 +147,7 @@ From these settings, modular-app system will configure some stuffs:
   - Supported languages are "en", `it`, `es`, `fr` and `de`
   - Allowed namespaces are `home-page`, `projects`, `info`, `work`,`education`, `titles` (for pages), and `modals` (for modals titles)
   - `PAGES_NAMESPACE` set to `titles`, and internally contains all pages titles. For example, this is the english version:
-  ```
+  ```json
   {
   "HOME_PAGE": "Home",
   "INFO": "Info",
