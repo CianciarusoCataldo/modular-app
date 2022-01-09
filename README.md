@@ -30,12 +30,13 @@ Build your Web app from here !
   - [Routing system](#routing-system)
   - [Modal](#modal)
   - [UI](#ui)
-- [Customize Redux state](#customize-redux-state) 
+  - [Customize Redux state](#customize-redux-state) 
 - [A fully working example](#a-fully-working-example)
 - [Included libraries](#included-libraries)
 - [Authors](#authors)
 - [License](#license)
 
+---
 ## Installation
 [Fork this repo](https://docs.github.com/en/get-started/quickstart/fork-a-repo) or just download it as a zip:
 
@@ -43,22 +44,23 @@ Build your Web app from here !
 
 If not forked, unzip the downloaded file, then copy its content inside your web-app repo. You are ready to configure it !
 
+---
+---
 ## Configuration
-The main benefit when using `modular-app` is that it is fully customizable without huge code changes. The main config is located inside `src` folder, into `app.config.json` file. All settings are loaded, at startup, inside Redux state, to easily get them without loading again the `app.config.json` file. Here you can find a complete list of config parameters:
+The main benefit when using `modular-app` is that it is fully customizable with few code changes (so you can focus on other part of the app). The main config file is located inside `src` folder, `app.config.json`. All settings are loaded, at startup, inside Redux state, to easily retrieve them without loading/importing again the `app.config.json` file. Here you can find a complete list of config parameters:
 
-
+---
 ### APP_NAME
-Your app name, used, with no changes, in various part of the application:
-- Every page title is composed by <APP_NAME> - <PAGE_TITLE>
+Your app name, used, by default (as a starting point), in various part of the application:
+- Every page title is composed by `<APP_NAME> - <PAGE_TITLE>`
 - The APP_NAME is showed inside the Header and at the top of the Drawer
 
-You can easily change this behaviour inside `AppDrawer` and `AppHeader` components (both components are are located into `app/components/moecules` folder). To retrieve this parameter, use `getAppName` redux selector.
+You can easily change this behaviour inside `AppDrawer` and `AppHeader` components (both components are located into `app/components/moecules` folder). To retrieve this parameter, use `getAppName` redux selector.
 
 
 :red_circle: **IMPORTANT: set your custom app name also inside `public/manifest.json`, `public/index.html` and `package.json` files.**
 
 ---
-
 ### REDUX
 Additional redux settings. Modular-app gives you some initial redux actions, epics and reducers inside the state, to speed up your development work:
 - `ui`: drive some useful UI features, like the `dark-mode`, the `drawer` management, the `toast` notifications system and the `language` actually used to localize your app
@@ -70,23 +72,21 @@ Additional redux settings. Modular-app gives you some initial redux actions, epi
 | UI | Enable/disable the ui management system. If `false`, the `ui` reducer will be excluded (no dark-mode, toast notifications, drawer and language management) |
 
 ---
-
 ### ROUTER
 Contains all router config parameters. These settings are used to configure the [react-router](https://reactrouter.com/) logic:
 
 | Parameter | Description |
 | ------------- | ------------- |
 | BASENAME  | Your app basename, is added at the start of every route  |
-| HOME_PAGE  | Your Home-page route, needed for some app features. Every route (URL) not specified inside `PAGES` will redirect to this route. Also, The Home icon is showed at the top-left of the app when the user is into another route (to easily go back to home page)|
+| HOME_PAGE  | Your Home-page route (that is associated with `HOME_PAGE` component, inside `app/pages` folder), needed for some app features. Every route (URL) not specified inside `PAGES` will redirect to this route. Also, The Home icon is showed at the top-left of the app when the user is into another route (to easily go back to home page)|
 | PAGES  | Your app pages. This dictionary (key-value format, the key is the Page name, and the value is the Page associated route) is used to determine which page is showed for each available route. You must specify here your pages to make them accessible by the routing logic. |
 
 
 :red_circle: **IMPORTANT, TO AVOID ERRORS:**
 - **The routing logic will search for every page inside `app/pages` folder, so make sure to create a file for each page (with a default export) specified inside `PAGES`field**
-- **Home Page folder/file (always inside `app/pages`) must be named `HOME_PAGE` for automation purpose, no need to include it into `PAGES` as its route is already set with `HOME_PAGE` (so would be redundant)**
+- **Home Page folder/file must be present inside `app/pages` and must be named `HOME_PAGE` for automation purpose, no need to include it into `PAGES` as its route is already set with `HOME_PAGE` (so would be redundant)**
 
 ---
-
 ### I18N
 Modular-app let you fully localize your app (multi-language support) with [I18next](https://react.i18next.com/) library. Inside this field, you can find some localization settings (that will be applied on I18next instance). If you are not familiar with I18next system, take a look at its [official guide](https://www.i18next.com/overview/configuration-options). Below, a list of available settings:
 
@@ -103,7 +103,7 @@ Modular-app let you fully localize your app (multi-language support) with [I18ne
 :red_circle: **IMPORTANT: update your web-app homepage URL inside `package.json` (`homepage` field) and `.env` files**
 
 ---
-
+---
 ## Global state management
 
 Most of the app behaviours are driven by Redux global state. Internally, `modular-app` has 4 state slices, used for different purposes:
@@ -112,6 +112,7 @@ Most of the app behaviours are driven by Redux global state. Internally, `modula
 - `router`, to manage routing system
 - `config`, to store all settings
 
+---
 ### Access config settings
 All settings inside `app.config.json` are stored inside Redux state at app startup, to access them without loading again the .json file. You can retrieve them with selectors:
 
@@ -127,7 +128,6 @@ All settings inside `app.config.json` are stored inside Redux state at app start
 | getHomePage | The [HOME_PAGE](#router) route |
 
 ---
-
 ### Routing system
 You can surf between your pages by simply using some specific actions, with some extra features:
 
@@ -136,9 +136,10 @@ You can surf between your pages by simply using some specific actions, with some
 | requestRoute(route)  | Go to to the page associated with the given `route`. If this `route` doesn't exists, you will be redirected to [HOME_PAGE route](#router) |
 | goBack  | go to the previous visited route, based on the browser history (if available) |
 
+---
+### Modal
+You can manage which Modal is showed and when, simply by adding custom components inside `app/modals`(if `MODALS` parameter is set to `true` inside `app.config.json`, see [Redux](#redux) for details):
 
-## Modal
-You can manage which Modal is showed and when, simply by adding custom components inside `app/modals`:
 ```tsx
 const MODALS = {
   EXAMPLE: <div />,
@@ -146,18 +147,22 @@ const MODALS = {
 ```
 
 Then and by using the `openModal` action, passing the component key as parameter:
+
 ```tsx
 ...
 const dispatch = useDispatch();
 dispatch(openModal('EXAMPLE'))
 ...
 ```
+
 This will open the Modal with the `EXAMPLE` component inside. To close it, just dispatch `closeModal` action. 
+
 
 | Action  | Effect |
 | ------------- | ------------- |
 | openModal(type)  | Open pre-configured app modal with selected (`type`) content inside  |
 | closeModal  | Close pre-configured app modal  |
+
 
 You can retrieve actual modal `type` (null if not set) and visibility with `getModalView` selector:
 
@@ -165,9 +170,9 @@ You can retrieve actual modal `type` (null if not set) and visibility with `getM
 | ------------- | ------------- |
 | getModalView | Modal visibility (`isVisible`) and `type` |
 
-
-## UI
-Some UI behaviours are driven by `ui` state slice and its actions (if `UI` is set to true inside `app.config.json` file, into [Redux](#redux) field):
+---
+### UI
+Most of the UI behaviours are driven by `ui` state slice and its actions (if `UI` is set to true inside `app.config.json` file, see [Redux](#redux) for details):
 
 | Action  | Effect |
 | ------------- | ------------- |
@@ -186,14 +191,15 @@ UI parameter can be retrieved with specific selectors:
 | getLanguage | Actual used language (see [I18N](#i18n) for details) |
 | isInDarkMode | `true` if dark mode is enabled, `false` otherwise |
 
-
-## Customize Redux state
+---
+### Customize Redux state
 If you want to customize Modular-app global state (powered by [Redux](https://redux.js.org/)), you just need to follow few steps:
 - Add your custom reducers inside `REDUCERS` object, located to `api/state-slices/reducers` (state interface will be updated accordingly)
 - Add your custom epics inside `EPICS`, located to `api/state-slices/reducers`
 - Add your custom initial-states (for preloading purpose) inside `PRELOADED_STATE`, located to `api/state-slices/preloaded-state`
 
-
+---
+---
 ## A fully working example
 
 To better understand how to use `modular-app` system, here is a real example, [my portfolio web-app](https://github.com/CianciarusoCataldo/CianciarusoCataldo.github.io), that is based on `modular-app`. Below, my `app.config.json`: 
@@ -237,6 +243,7 @@ From these settings, modular-app system will configure some stuffs:
   - Supported languages are "en", `it`, `es`, `fr` and `de`
   - Allowed namespaces are `home-page`, `projects`, `info`, `work`,`education`, `titles` (for pages), and `modals` (for modals titles)
   - `PAGES_NAMESPACE` set to `titles`, and internally contains all pages titles. For example, this is the english version:
+  
   ```json
   {
   "HOME_PAGE": "Home",
@@ -244,6 +251,7 @@ From these settings, modular-app system will configure some stuffs:
   "PROJECTS": "I miei progetti"
   }
   ```
+  
   - `MODALS_NAMESPACE` set to `modals`
   - Strings dictionaries are loaded from `/locales/{{lng}}/{{ns}}.json`, where `lng` is the actual used language and `ns` the requested namespace
  
@@ -256,7 +264,7 @@ And here you can see the results:
 - Built version of my portfolio web-app --> https://cianciarusocataldo.github.io/
 
 ---
-
+---
 ## Included libraries
 - [Modular-ui](https://github.com/CianciarusoCataldo/modular-ui), every UI component comes from this library (check it out, I maintain it too!)
 - [Redux](https://redux.js.org/), in conjunction with [Reduxjs toolkit](https://redux-toolkit.js.org/) and [Redux observable](https://redux-observable.js.org/), for global state management
