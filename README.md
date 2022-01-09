@@ -38,7 +38,7 @@ Build your Web app from here !
 If not forked, unzip the downloaded file, then copy its content inside your web-app repo. You are ready to configure it !
 
 ## Configuration
-The main benefit when using **modular-app** is that it is fully customizable without huge code changes. The main config is located inside **src** folder, into **app.config.json** file. All settings are loaded, at startup, inside Redux state, to easily get them without loading again the `app.config.json` file. Here you can find a complete list of config parameters:
+The main benefit when using `modular-app` is that it is fully customizable without huge code changes. The main config is located inside `src` folder, into `app.config.json` file. All settings are loaded, at startup, inside Redux state, to easily get them without loading again the `app.config.json` file. Here you can find a complete list of config parameters:
 
 
 ### APP_NAME
@@ -126,10 +126,10 @@ From these settings, modular-app system will configure some stuffs:
 ![](https://user-images.githubusercontent.com/47371276/148669286-65bf1156-ba48-4fec-9c91-4f2d8eae6edd.png)
 
 - i18next is configured with these settings:
-  - Fallback language is "en" 
-  - Supported languages are "en", "it", "es", "fr" and "de"
-  - Allowed namespaces are "home-page", "projects", "info", "work" and "education"
-  - PAGES_NAMESPACE set to `titles`, and internally contains all pages titles. For example, this is the english version:
+  - Fallback language is set to `en` 
+  - Supported languages are "en", `it`, `es`, `fr` and `de`
+  - Allowed namespaces are `home-page`, `projects`, `info`, `work`,`education`, `titles` (for pages), and `modals` (for modals titles)
+  - `PAGES_NAMESPACE` set to `titles`, and internally contains all pages titles. For example, this is the english version:
   ```
   {
   "HOME_PAGE": "Home",
@@ -137,10 +137,10 @@ From these settings, modular-app system will configure some stuffs:
   "PROJECTS": "I miei progetti"
   }
   ```
-  - MODALS_NAMESPACE set to `modals`
+  - `MODALS_NAMESPACE` set to `modals`
   - Strings dictionaries are loaded from `/locales/{{lng}}/{{ns}}.json`, where `lng` is the actual used language and `ns` the requested namespace
  
- To reflect `i18next` settings, there is a `locales` folder inside `public` folder (as `modular-app` is based on [create-react-app](https://create-react-app.dev/)), with 4 folders (for each language) that contains a json file for every namespace:
+ To reflect `i18next` settings, there is a `locales` folder inside `public` folder (as `modular-app` is based on [create-react-app](https://create-react-app.dev/)), with 4 folders (for each language) that contains a .json file for every namespace:
 
 ![](https://user-images.githubusercontent.com/47371276/148669860-7cdfda48-1c75-4188-a8fc-08afbb2540ee.png)
 
