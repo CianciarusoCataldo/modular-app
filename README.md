@@ -25,7 +25,7 @@ Build your Web app from here !
   - [REDUX](#redux)
   - [ROUTER](#router) 
   - [I18N](#i18n)
-- [A working example](#a-working-example)
+- [A fully working example](#a-fully-working-example)
 - [Included libraries](#included-libraries)
 - [Authors](#authors)
 - [License](#license)
