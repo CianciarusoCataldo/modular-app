@@ -25,6 +25,11 @@ Build your Web app from here !
   - [REDUX](#redux)
   - [ROUTER](#router) 
   - [I18N](#i18n)
+- [Global state management](#global-state-management)
+  - [Access config settings](#access-config-settings)
+  - [Routing system](#routing-system)
+  - [Modal](#modal)
+  - [UI](#ui)
 - [Customize Redux state](#customize-redux-state) 
 - [A fully working example](#a-fully-working-example)
 - [Included libraries](#included-libraries)
@@ -43,9 +48,11 @@ The main benefit when using `modular-app` is that it is fully customizable witho
 
 
 ### APP_NAME
-Your app name, used in various part of the application:
+Your app name, used, with no changes, in various part of the application:
 - Every page title is composed by <APP_NAME> - <PAGE_TITLE>
 - The APP_NAME is showed inside the Header and at the top of the Drawer
+
+You can easily change this behaviour inside `AppDrawer` and `AppHeader` components (both components are are located into `app/components/moecules` folder). To retrieve this parameter, use `getAppName` redux selector.
 
 
 :red_circle: **IMPORTANT: set your custom app name also inside `public/manifest.json`, `public/index.html` and `package.json` files.**
@@ -54,13 +61,13 @@ Your app name, used in various part of the application:
 
 ### REDUX
 Additional redux settings. Modular-app gives you some initial redux actions, epics and reducers inside the state, to speed up your development work:
-- `ui`: drive some useful UI features, like the `dark-mode`, the `drawer` management through some specific Redux actions and the toast notifications system
-- `modal`: manage the global modal system. You can manage which Modal is showed and when, simply by adding custom components inside `app/modals`, and by using the `openModal` action, using the component key as parameter. As an example, I included an empty modal inside `MODALS` dictionary, called `DEFAULT`. So, to open this specific modal, you'll just need to dispatch `openModal('DEFAULT')`. Only modals keys inside `app/modals` exported object are allowed, otherwise no content will be showed.
+- `ui`: drive some useful UI features, like the `dark-mode`, the `drawer` management, the `toast` notifications system and the `language` actually used to localize your app
+- `modal`: manage the global modal system. 
 
 | Parameter | Description |
 | ------------- | ------------- |
 | MODALS | Enable/disable the modal management system. If `false`, the `modal` reducer will be excluded (and its epics too, so open/close modal actions won't show/hide the app modal) |
-| UI | Enable/disable the ui management system. If `false`, the `ui` reducer will be excluded (no dark-mode, toast notifications and drawer management) |
+| UI | Enable/disable the ui management system. If `false`, the `ui` reducer will be excluded (no dark-mode, toast notifications, drawer and language management) |
 
 ---
 
@@ -76,7 +83,7 @@ Contains all router config parameters. These settings are used to configure the 
 
 :red_circle: **IMPORTANT, TO AVOID ERRORS:**
 - **The routing logic will search for every page inside `app/pages` folder, so make sure to create a file for each page (with a default export) specified inside `PAGES`field**
-- **Home Page folder/file (always inside `app/pages`) must be named `HOME_PAGE` for automation purpose**
+- **Home Page folder/file (always inside `app/pages`) must be named `HOME_PAGE` for automation purpose, no need to include it into `PAGES` as its route is already set with `HOME_PAGE` (so would be redundant)**
 
 ---
 
@@ -96,6 +103,89 @@ Modular-app let you fully localize your app (multi-language support) with [I18ne
 :red_circle: **IMPORTANT: update your web-app homepage URL inside `package.json` (`homepage` field) and `.env` files**
 
 ---
+
+## Global state management
+
+Most of the app behaviours are driven by Redux global state. Internally, `modular-app` has 4 state slices, used for different purposes:
+- `modal`, to manage modals (can be disabled in config file, see [REDUX](#redux) for details)
+- `ui`, to manage UI behaviour (can be disabled in config file, see [REDUX](#redux) for details)
+- `router`, to manage routing system
+- `config`, to store all settings
+
+### Access config settings
+All settings inside `app.config.json` are stored inside Redux state at app startup, to access them without loading again the .json file. You can retrieve them with selectors:
+
+| Selector | Returns |
+| ------------- | ------------- |
+| getConfig | The entire Config object, that contains all settings |
+| getRouterConfig | The [Routing](#router) settings |
+| getAppName | The [APP_NAME](#app_name) parameter |
+| geti18nConfig | The [i18next](#i18n) settings |
+| getLanguages | All [Supported languages (SUPPORTED_LANGUAGES)](#i18n) |
+| getAppBaseName | The [BASENAME](#router) parameter |
+| getPages | The allowed [routes (PAGES)](#router), with [BASENAME](#router) at the start of each route |
+| getHomePage | The [HOME_PAGE](#router) route |
+
+---
+
+### Routing system
+You can surf between your pages by simply using some specific actions, with some extra features:
+
+| Action  | Effect |
+| ------------- | ------------- |
+| requestRoute(route)  | Go to to the page associated with the given `route`. If this `route` doesn't exists, you will be redirected to [HOME_PAGE route](#router) |
+| goBack  | go to the previous visited route, based on the browser history (if available) |
+
+
+## Modal
+You can manage which Modal is showed and when, simply by adding custom components inside `app/modals`:
+```tsx
+const MODALS = {
+  EXAMPLE: <div />,
+} as const;
+```
+
+Then and by using the `openModal` action, passing the component key as parameter:
+```tsx
+...
+const dispatch = useDispatch();
+dispatch(openModal('EXAMPLE'))
+...
+```
+This will open the Modal with the `EXAMPLE` component inside. To close it, just dispatch `closeModal` action. 
+
+| Action  | Effect |
+| ------------- | ------------- |
+| openModal(type)  | Open pre-configured app modal with selected (`type`) content inside  |
+| closeModal  | Close pre-configured app modal  |
+
+You can retrieve actual modal `type` (null if not set) and visibility with `getModalView` selector:
+
+| Selector | Returns |
+| ------------- | ------------- |
+| getModalView | Modal visibility (`isVisible`) and `type` |
+
+
+## UI
+Some UI behaviours are driven by `ui` state slice and its actions (if `UI` is set to true inside `app.config.json` file, into [Redux](#redux) field):
+
+| Action  | Effect |
+| ------------- | ------------- |
+| switchDarkMode  | Enable/disable dark mode (fully supported by [modular-ui](https://github.com/CianciarusoCataldo/modular-ui) components  |
+| openDrawer  | Open app pre-configured Dawer |
+| closeDrawer | Close app pre-configured Drawr |
+| changeLanguage | Change actual language (can be also set with the given Language selector dropdown menu) |
+
+UI parameter can be retrieved with specific selectors:
+
+| Selector | Returns |
+| ------------- | ------------- |
+| getUIView | The entire `ui` state slice |
+| isDrawerOpen | Drawer visibility |
+| isHomePage | `true` if actual route is `HOME_PAGE` route (see [ROUTER](#router) for details), `false` otherwise |
+| getLanguage | Actual used language (see [I18N](#i18n) for details) |
+| isInDarkMode | `true` if dark mode is enabled, `false` otherwise |
+
 
 ## Customize Redux state
 If you want to customize Modular-app global state (powered by [Redux](https://redux.js.org/)), you just need to follow few steps:
@@ -168,11 +258,13 @@ And here you can see the results:
 ---
 
 ## Included libraries
+- [Modular-ui](https://github.com/CianciarusoCataldo/modular-ui), every UI component comes from this library (check it out, I maintain it too!)
 - [Redux](https://redux.js.org/), in conjunction with [Reduxjs toolkit](https://redux-toolkit.js.org/) and [Redux observable](https://redux-observable.js.org/), for global state management
 - [PostCSS](https://postcss.org/), to parse and optimize `.css` output files (expecially to lower final bundle size)
 - [TailwindCSS](https://tailwindcss.com/), for a smoother development experience when styling elements
 - [I18next](https://www.i18next.com/) (with its React specific implementation, [react-i18next](https://react.i18next.com/)), to fully support multi-language when localizing the app
 - [redux-first-history](https://github.com/salvoravida/redux-first-history), with [react-router v5](https://reactrouter.com/), to manage page routes with Redux store as a single source of truth, with browser history support
+- [React-toastify](https://fkhadra.github.io/react-toastify/introduction/), to show custom toast notifications
 - Modular-app is written entirely with [Typescript](https://www.typescriptlang.org/) and it is based on the latest version of [create-react-app](https://create-react-app.dev/) building system
 
 ## Authors
