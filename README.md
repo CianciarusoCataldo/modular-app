@@ -40,11 +40,7 @@ Build your Web app from here !
 
 ---
 ## Installation
-[Fork this repo](https://docs.github.com/en/get-started/quickstart/fork-a-repo) or just download it as a zip:
-
-![](https://user-images.githubusercontent.com/47371276/148663313-f1a030c3-6202-499c-b101-6a0d4f7c473a.png)
-
-If not forked, unzip the downloaded file, then copy its content inside your web-app repo. You are ready to configure it !
+Just download the latest release from [here](https://api.github.com/repos/cianciarusocataldo/modular-app/zipball), to be sure to have the latest version of the app. Once downloaded, unzip the downloaded file. You are ready to configure it !
 
 ---
 ---
