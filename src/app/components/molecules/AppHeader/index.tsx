@@ -3,16 +3,14 @@ import classNames from "classnames";
 
 import { HomeIcon, BurgerIcon, LogoIcon } from "assets/images";
 
-import { driveWithDarkMode } from "api/helpers/ui-helper";
-
-import { requestRoute } from "api/core/store/internal-slices/router/actions";
-import { openDrawer } from "api/core/store/internal-slices/ui/actions";
-
 import {
   getAppName,
   getHomePage,
-} from "api/core/store/internal-slices/config/selectors";
-import { isHomePage } from "api/core/store/internal-slices/ui/selectors";
+  isHomePage,
+  isInDarkMode,
+  openDrawer,
+  requestRoute,
+} from "@cianciarusocataldo/modular-engine";
 
 import { Button, Header, Link } from "@cianciarusocataldo/modular-ui";
 import LanguageSelector from "../LanguageSelector";
@@ -23,10 +21,10 @@ const AppHeader = () => {
   const APP_NAME = useSelector(getAppName);
   const hideHomeButton = useSelector(isHomePage);
   const HOME = useSelector(getHomePage);
-  const CustomHeader = driveWithDarkMode(Header);
+  const dark = useSelector(isInDarkMode);
 
   return (
-    <CustomHeader>
+    <Header dark={dark}>
       <div className="flex flex-row items-center mt-14 mb-5 ml-1">
         <LanguageSelector />
         <Button
@@ -86,7 +84,7 @@ const AppHeader = () => {
           </div>
         </div>
       </div>
-    </CustomHeader>
+    </Header>
   );
 };
 
