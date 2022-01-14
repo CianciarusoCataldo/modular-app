@@ -16,6 +16,7 @@
 
 
 An optimized and ready to use React app, a standard template for every projects. Build your Web app from here ! 
+<br><br>A production ready version of the base app can be found [here](https://cianciarusocataldo.github.io/modular-app/)
 
 ---
 
