@@ -14,13 +14,13 @@
 ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/CianciarusoCataldo/modular-app/react?label=React%20version)
 ![Maintenance](https://img.shields.io/maintenance/yes/2022?label=Maintanined)
 
---- 
 
-An optimized and ready to use React app, a standard template for every projects. Internally, use [modular-ui](https://github.com/CianciarusoCataldo/modular-ui) library for UI components (I maintain it too, check it out !). A production ready version of the standard app can be found at https://cianciarusocataldo.github.io/modular-app/
+An optimized and ready to use React app, a standard template for every projects. Build your Web app from here ! 
 
-Build your Web app from here ! 
+---
 
 ## Summary
+- [Modular ecosystem](#modular-ecosystem)
 - [Installation](#installation)
 - [Configuration](#configuration)
   - [APP_NAME](#app_name) 
@@ -39,6 +39,20 @@ Build your Web app from here !
 - [License](#license)
 
 ---
+## Modular ecosystem
+
+Modular-app is composed by 2 different libraries, for different purposes:
+- [Modular-ui](https://github.com/CianciarusoCataldo/modular-ui), for UI components
+- [Modular-engine](https://github.com/CianciarusoCataldo/modular-engine), for redux global state, i18next localization and most of the app logic. Also, most of dependencies (like redux, redux-first-history and so on) comes fom this library, that act as a single source of truth, to keep them in sync and updated.
+
+<div align="center">
+<img width="700px" alt="" src="https://user-images.githubusercontent.com/47371276/149502899-d0784952-2e66-459a-8b56-1c3610454e38.png" />
+</div>
+
+Both can be used separately in your project, but they are designed to work together, to use 100% of their functionalities.
+
+---
+
 ## Installation
 Just download the latest release from [here](https://api.github.com/repos/cianciarusocataldo/modular-app/zipball), to be sure to have the latest version of the app. Once downloaded, unzip the downloaded file. You are ready to configure it !
 
