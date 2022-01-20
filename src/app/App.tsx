@@ -13,11 +13,11 @@ import {
 import AppHeaderContent from "./contents/header";
 import AppFooterContent from "./contents/footer";
 
-import AppDrawer from "./components/molecules/AppDrawer";
-import AppModal from "./components/molecules/AppModal";
+import AppDrawer from "./components/predefined/AppDrawer";
+import AppModal from "./components/predefined/AppModal";
 import { Container } from "@cianciarusocataldo/modular-ui";
-import LanguageSelector from "./components/molecules/LanguageSelector";
-import DarkModeSwitcher from "./components/molecules/DarkModeSwitcher";
+import LanguageSelector from "./components/predefined/LanguageSelector";
+import DarkModeSwitcher from "./components/predefined/DarkModeSwitcher";
 
 /** Modular-app main component */
 const App = ({ history }: { history: History }) => {

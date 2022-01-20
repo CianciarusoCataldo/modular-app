@@ -1,4 +1,4 @@
-import AppPage from "app/components/molecules/AppPage";
+import AppPage from "app/components/predefined/AppPage";
 
 /** Modular-app home page */
 const HomePage = () => {
