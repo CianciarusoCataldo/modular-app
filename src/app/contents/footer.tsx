@@ -11,6 +11,7 @@ const FooterContent = () => {
 
         <img
           alt=""
+          className="p-1"
           src="https://img.shields.io/github/package-json/v/cianciarusocataldo/modular-app?label=latest%20version"
           height="25"
         />

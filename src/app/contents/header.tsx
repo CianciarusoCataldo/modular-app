@@ -44,14 +44,14 @@ const HeaderContent = () => {
         {LeftArrowIcon}
       </Button>
       <div className="m-auto flex flex-row">
-        <div className="m-auto mr-1 md:mr-2 lg:mr-2 xl:mr-2 2xl:mr-2 3xl:mr-2">
+        <div className="m-auto mr-2">
           {LogoIcon}
         </div>
         <div className="flex flex-col">
           <Link
             newTab
             dark={dark}
-            to="https://github.com/CianciarusoCataldo/modular-ui"
+            to="https://github.com/CianciarusoCataldo/modular-app"
             className="m-auto"
           >
             <p className="text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl 2xl:text-4xl 3xl:text-4xl 4xl:text-4xl">

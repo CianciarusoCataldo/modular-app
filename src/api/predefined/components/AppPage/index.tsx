@@ -1,11 +1,11 @@
-import { Container } from "@cianciarusocataldo/modular-ui";
+import { AllowedComponent, Container } from "@cianciarusocataldo/modular-ui";
 import { driveWithDarkMode } from "@cianciarusocataldo/modular-engine";
 
 /** Custom Modular-app page */
 const AppPage = ({
   children,
 }: {
-  children: JSX.Element | Element | string | (JSX.Element | Element | string)[];
+  children: AllowedComponent | AllowedComponent[];
 }) => {
   const AppContainer = driveWithDarkMode(Container);
   return (
