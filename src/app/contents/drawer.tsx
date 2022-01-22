@@ -14,7 +14,12 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
-import { Button, Divider, DrawerElement, Link } from "@cianciarusocataldo/modular-ui";
+import {
+  Button,
+  Divider,
+  DrawerElement,
+  Link,
+} from "@cianciarusocataldo/modular-ui";
 
 export const DrawerLogo = () => {
   const APP_NAME = useSelector(getAppName);
@@ -25,7 +30,7 @@ export const DrawerLogo = () => {
       {LogoIcon}
       <LinkComponent
         to="https://github.com/CianciarusoCataldo/modular-app"
-        className="ml-1 text-lg"
+        className="ml-1 text-lg break-all"
         newTab
       >
         {APP_NAME}
