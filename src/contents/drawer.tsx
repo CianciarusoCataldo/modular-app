@@ -42,10 +42,10 @@ export const DrawerLogo = () => {
 export const DrawerContent = () => {
   const dispatch = useDispatch();
   const PATHS = useSelector(getPages);
-  const I18N = useSelector(geti18nConfig);
+  const i18n = useSelector(geti18nConfig);
   const HOME = useSelector(getHomePage);
   const dark = useSelector(isInDarkMode);
-  const { t } = useTranslation(I18N.PAGES_NAMESPACE);
+  const { t } = useTranslation(i18n.pagesNamespace);
 
   const ALL_PATHS: Record<string, string> = { ...PATHS, HOME_PAGE: HOME };
 
