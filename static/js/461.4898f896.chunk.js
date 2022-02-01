@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmodular_app=self.webpackChunkmodular_app||[]).push([[461],{5461:function(u,a,e){e.r(a),e.d(a,{default:function(){return n.Ix}});var n=e(3560)}}]);
