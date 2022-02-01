@@ -16,6 +16,8 @@ const engineConfig = {
     fallbackLanguage: "en",
     supportedLanguages: ["en", "it", "es", "fr", "de"],
     loadPath: "/modular-app/locales/{{lng}}/{{ns}}.json",
+    pagesNamespace: "page-titles",
+    modalsNamespace: "modal-titles",
   },
 };
 
