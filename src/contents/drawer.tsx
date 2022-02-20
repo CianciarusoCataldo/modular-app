@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { LogoIcon } from "assets/images";
+import { DrawerLogoIcon } from "assets/images";
 
 import {
   closeDrawer,
@@ -14,27 +14,24 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
-import {
-  Button,
-  Divider,
-  DrawerElement,
-  Link,
-} from "@cianciarusocataldo/modular-ui";
+import { Button, Divider, Link } from "@cianciarusocataldo/modular-ui";
 
 export const DrawerLogo = () => {
   const APP_NAME = useSelector(getAppName);
   const LinkComponent = driveWithDarkMode(Link);
 
   return (
-    <div className="flex flex-row">
-      {LogoIcon}
-      <LinkComponent
-        to="https://github.com/CianciarusoCataldo/modular-app"
-        className="ml-1 text-lg break-all"
-        newTab
-      >
-        {APP_NAME}
-      </LinkComponent>
+    <div className="flex flex-row mr-3">
+      {DrawerLogoIcon}
+      <div className="flex flex-col align-middle items-center">
+        <LinkComponent
+          to="https://github.com/CianciarusoCataldo/modular"
+          className="my-auto ml-2 text-xl break-all"
+          newTab
+        >
+          {APP_NAME}
+        </LinkComponent>
+      </div>
     </div>
   );
 };
@@ -79,5 +76,3 @@ export const DrawerContent = () => {
     </div>
   );
 };
-
-export const DrawerElements: DrawerElement[] = [];

@@ -1,10 +1,11 @@
+import classNames from "classnames";
+
 import { useDispatch, useSelector } from "react-redux";
 
 import {
   BurgerIcon,
   DarkModeIcon,
   LANGUAGES_ICONS,
-  LeftArrowIcon,
   LightModeIcon,
   LogoIcon,
 } from "assets/images";
@@ -38,10 +39,16 @@ const HeaderContent = () => {
   const LANGUAGES = Object.keys(LANGUAGES_ICONS);
 
   return (
-    <div className="flex flex-col test-class">
-      <div className="flex flex-col items-end">
-        <div className="flex flex-row">
+    <div className="flex flex-col">
+      <div
+        className="mb-2 flex flex-col"
+        style={{
+          alignItems: "flex-end",
+        }}
+      >
+        <div className="fixed flex flex-row">
           <Dropdown
+            className="p-0"
             dark={false}
             value={LANGUAGES.findIndex((lang) => lang === language)}
             shadow
@@ -64,7 +71,7 @@ const HeaderContent = () => {
           />
         </div>
       </div>
-      <div className="flex flex-row">
+      <div className="flex flex-row mt-12">
         <div className="my-auto">
           <Button
             aria-label="drawer button"
@@ -74,7 +81,7 @@ const HeaderContent = () => {
             unstyled
             className="outline-none"
           >
-            <div className="p-1 sm:p-2 md:p-2 lg:p-2 xl:p-2">{BurgerIcon}</div>
+            <div className="p-1 sm:p-2 md:p-2">{BurgerIcon}</div>
           </Button>
         </div>
         <div className="my-auto">
@@ -87,7 +94,19 @@ const HeaderContent = () => {
             className="overflow-auto ml-1 outline-none"
             hide={hideHomeButton}
           >
-            {LeftArrowIcon}
+            <svg
+              className={classNames(
+                {
+                  "fill-[white]": dark,
+                  "fill-[black]": !dark,
+                },
+                "w-8 h-8 hover:fill-[#ff9f51] active:fill-[#fb7a10] xsm:w-12 xsm:h-12"
+              )}
+              viewBox="0 0 11 18"
+            >
+              <path d="M8.681.196l2.121 2.12-8.484 8.487-2.12-2.12z" />
+              <path d="M10.803 15.047l-2.121 2.121L.197 8.683l2.121-2.121z" />
+            </svg>
           </Button>
         </div>
         <div className="m-auto flex flex-row p-2">
@@ -98,7 +117,7 @@ const HeaderContent = () => {
               newTab
               to="https://github.com/CianciarusoCataldo/modular-app"
             >
-              <p className="break-words text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-4xl 2xl:text-4xl 3xl:text-4xl 4xl:text-4xl">
+              <p className="break-words text-lg sm:text-xl md:text-2xl lg:text-4xl">
                 {APP_NAME}
               </p>
             </Link>
