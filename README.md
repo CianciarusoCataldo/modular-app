@@ -21,20 +21,7 @@ An optimized and ready to use React app, a standard template for every projects.
 
 ## Summary
 
--   [Modular ecosystem](#modular-ecosystem)
 -   [Installation](#installation)
--   [Configuration](#configuration)
-    -   [APP_NAME](#app_name) 
-    -   [REDUX](#redux)
-    -   [ROUTER](#router) 
-    -   [I18N](#i18n)
--   [Global state management](#global-state-management)
-    -   [Access config settings](#access-config-settings)
-    -   [Routing system](#routing-system)
-    -   [Modal](#modal)
-    -   [UI](#ui)
-    -   [Customize Redux state](#customize-redux-state) 
--   [A fully working example](#a-fully-working-example)
 -   [Included libraries](#included-libraries)
 -   [Authors](#authors)
 -   [License](#license)
