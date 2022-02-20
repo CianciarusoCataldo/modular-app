@@ -2,7 +2,7 @@ import "assets/styles/styles.output.css";
 
 if ("serviceWorker" in navigator && process.env.NODE_ENV === "production") {
   navigator.serviceWorker
-    .register("./serviceWorker.js", { scope: "/modular/" })
+    .register("./serviceWorker.js", { scope: "/modular-app/" })
     .then(
       function () {
         console.log("Service worker registration succeeded");
