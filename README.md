@@ -9,7 +9,6 @@
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/CianciarusoCataldo/modular-app?label=Stable%20release)
 [![CodeQL analysis](https://github.com/CianciarusoCataldo/modular-app/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/CianciarusoCataldo/modular-app/actions/workflows/codeql-analysis.yml)
 [![pages-build-deployment](https://github.com/CianciarusoCataldo/modular-app/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/CianciarusoCataldo/modular-app/actions/workflows/pages/pages-build-deployment)
-![GitHub repo size](https://img.shields.io/github/repo-size/CianciarusoCataldo/modular-app)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/CianciarusoCataldo/modular-app?label=Code%20size) 
 ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/CianciarusoCataldo/modular-app/react?label=React%20version)
 ![Maintenance](https://img.shields.io/maintenance/yes/2022?label=Maintanined)
